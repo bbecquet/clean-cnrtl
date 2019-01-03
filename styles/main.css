@@ -1,0 +1,38 @@
+:root {
+  --text-color: #111;
+  --hi-color: blue;
+  --font-size: 21px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font: var(--font-size)/1.5em Georgia;
+  color: var(--text-color);
+}
+
+body {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tlf_parah {
+  margin-bottom: 2rem;
+}
+
+.tlf_parah .tlf_parah {
+  margin: 1rem 0 0.5rem;
+}
+
+.tlf_cvedette {
+  margin: 1.5rem 0;
+  font-size: 1.5rem;
+  color: var(--hi-color);
+}
+
+.tlf_tabulation {
+  margin-left: 1.5rem;
+}

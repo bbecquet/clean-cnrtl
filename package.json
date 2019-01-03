@@ -1,0 +1,18 @@
+{
+  "name": "clean-cnrtl",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Benjamin Becquet (benjamin.becquet@gmail.com)",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "hbs": "^4.0.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}
