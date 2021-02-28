@@ -1,10 +1,14 @@
 const request = require('request-promise');
 const cheerio = require('cheerio');
 
-const { noComma } = require('./src/utils');
+const { noComma } = require('./utils');
 
 function getDef(word) {
-  return request(`http://www.cnrtl.fr/definition/${word}`).then(transform);
+  return request(getCnrtlURL(word)).then(transform);
+}
+
+function getCnrtlURL(word) {
+  return `https://www.cnrtl.fr/definition/${word}`;
 }
 
 function transform(html) {
@@ -31,3 +35,4 @@ function transformExamples($) {
 }
 
 exports.getDef = getDef;
+exports.getCnrtlURL = getCnrtlURL;

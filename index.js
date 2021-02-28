@@ -1,5 +1,5 @@
 const express = require('express');
-const { getDef } = require('./cnrtl-util');
+const { getDef, getCnrtlURL } = require('./src/cnrtl-util');
 
 const app = express();
 app.set('view engine', 'hbs');
@@ -17,6 +17,7 @@ app.get('/def/:word', function (req, res, next) {
       res.render('def', {
         def: body,
         word,
+        cnrtlLink: getCnrtlURL(word),
       });
     })
     .catch(error => {

@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head lang="fr">
-    <meta charset="utf-8" />
-    <title>Clean CNRTL</title>
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0" />
-    <meta name="author" content="Benjamin Becquet" />
-    <link rel="stylesheet" href="/styles/main.css">
-  </head>
 
-  <body>
-    <main>
-      {{{ body }}}
-    </main>
-  </body>
+<head lang="fr">
+  <meta charset="utf-8" />
+  <title>{{#if word}}Définition de "{{{ word }}}" - {{/if}}Clean CNRTL</title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0" />
+  <meta name="author" content="Benjamin Becquet" />
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+  <main>
+    {{{ body }}}
+  </main>
+  <footer>
+    Ce site propose une présentation alternative des définitions du <a href="https://www.cnrtl.fr/definition/">Portail
+      lexicographique</a> du <abbr title="Centre National de Ressources Textuelles et Linguistiques">CNRTL</abbr>.
+  </footer>
+</body>
+
 </html>

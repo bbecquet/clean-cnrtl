@@ -1,6 +1,7 @@
 :root {
-  --text-color: #111;
-  --hi-color: rgb(120, 49, 212);
+  --color-text: #111;
+  --color-hi: rgb(120, 49, 212);
+  --color-light: #ddd;
   --font-size: 21px;
 }
 
@@ -11,7 +12,7 @@
 
 html {
   font: var(--font-size) / 1.5em Georgia;
-  color: var(--text-color);
+  color: var(--color-text);
 }
 
 body {
@@ -21,6 +22,18 @@ body {
 
 main {
   padding: 1rem;
+}
+
+body > footer {
+  text-align: right;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-top: 1px solid var(--color-light);
+  font-size: 0.75rem;
+}
+
+.cnrtlLink {
+  font-size: 0.75rem;
 }
 
 .tlf_parah {
@@ -34,7 +47,7 @@ main {
 .tlf_cvedette {
   margin: 1.5rem 0;
   font-size: 1.5rem;
-  color: var(--hi-color);
+  color: var(--color-hi);
 }
 
 .tlf_tabulation {
