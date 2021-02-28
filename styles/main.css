@@ -1,6 +1,6 @@
 :root {
   --text-color: #111;
-  --hi-color: blue;
+  --hi-color: rgb(120, 49, 212);
   --font-size: 21px;
 }
 
@@ -19,6 +19,10 @@ body {
   margin: 0 auto;
 }
 
+main {
+  padding: 1rem;
+}
+
 .tlf_parah {
   margin-bottom: 2rem;
 }
@@ -35,4 +39,8 @@ body {
 
 .tlf_tabulation {
   margin-left: 1.5rem;
+}
+
+.tlf_cdefinition {
+  font-weight: bold;
 }

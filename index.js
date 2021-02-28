@@ -1,12 +1,11 @@
 const express = require('express');
-const hbs = require('hbs');
 const { getDef } = require('./cnrtl-util');
 
 const app = express();
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/templates');
 
-app.use(function(req, res, next) {
+app.use(function(req, _res, next) {
     console.log(new Date().toISOString(), req.originalUrl);
     next();
 });
