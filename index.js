@@ -13,13 +13,14 @@ app.use(function (req, _res, next) {
 app.get('/def/:word', function (req, res, next) {
   const word = req.params.word;
   getDef(word)
-    .then((body) => {
+    .then(body => {
       res.render('def', {
         def: body,
         word,
       });
     })
-    .catch(() => {
+    .catch(error => {
+      console.error(error);
       next();
     });
 });

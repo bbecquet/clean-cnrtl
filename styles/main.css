@@ -44,3 +44,15 @@ main {
 .tlf_cdefinition {
   font-weight: bold;
 }
+
+.example {
+  padding-left: 1rem;
+}
+
+.example blockquote {
+  font-style: italic;
+}
+
+.example figcaption {
+  font-size: 0.75rem;
+}
