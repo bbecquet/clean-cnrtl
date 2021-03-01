@@ -8,10 +8,11 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-  font: var(--font-size) / 1.5em Georgia;
+  font: var(--font-size) / 1.5 Georgia;
   color: var(--color-text);
 }
 
@@ -34,6 +35,20 @@ body {
 
 .searchForm {
   display: flex;
+  column-gap: 0.5rem;
+}
+
+.searchForm .field {
+  flex-grow: 1;
+}
+
+.searchForm label {
+  display: block;
+  font-size: 0.75rem;
+}
+
+input[type='text'] {
+  width: 100%;
 }
 
 .cnrtlLink {

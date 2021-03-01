@@ -26,9 +26,13 @@ app.get('/def/:word', function (req, res, next) {
     });
 });
 
-app.get('/search', function (req, res, next) {
+app.get('/def', function (req, res, next) {
   const word = req.query['word'];
-  res.redirect(`/def/${word}`);
+  if (word) {
+    res.redirect(`/def/${word}`);
+  } else {
+    res.render('def');
+  }
 });
 
 app.use(express.static(__dirname));
