@@ -26,6 +26,11 @@ app.get('/def/:word', function (req, res, next) {
     });
 });
 
+app.get('/search', function (req, res, next) {
+  const word = req.query['word'];
+  res.redirect(`/def/${word}`);
+});
+
 app.use(express.static(__dirname));
 
 // Handle 404

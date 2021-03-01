@@ -10,13 +10,24 @@
 </head>
 
 <body>
-  <main>
-    {{{ body }}}
-  </main>
-  <footer>
-    Ce site propose une présentation alternative des définitions du <a href="https://www.cnrtl.fr/definition/">Portail
-      lexicographique</a> du <abbr title="Centre National de Ressources Textuelles et Linguistiques">CNRTL</abbr>.
-  </footer>
+  <div class="page">
+    <div>
+      <form class="searchForm" action="/search" method="get">
+        <div>
+          <label for="wordInput">Chercher un mot</label>
+          <input id="wordInput" type="text" name="word" />
+        </div>
+        <input type="submit" value="Chercher" />
+      </form>
+    </div>
+    <main>
+      {{{ body }}}
+    </main>
+    <footer>
+      Ce site propose une présentation alternative des définitions du <a href="https://www.cnrtl.fr/definition/">Portail
+        lexicographique</a> du <abbr title="Centre National de Ressources Textuelles et Linguistiques">CNRTL</abbr>.
+    </footer>
+  </div>
 </body>
 
 </html>

@@ -20,16 +20,20 @@ body {
   margin: 0 auto;
 }
 
-main {
+.page {
   padding: 1rem;
 }
 
-body > footer {
+.page > footer {
   text-align: right;
   margin-top: 1rem;
-  padding: 1rem;
+  padding-top: 1rem;
   border-top: 1px solid var(--color-light);
   font-size: 0.75rem;
+}
+
+.searchForm {
+  display: flex;
 }
 
 .cnrtlLink {
