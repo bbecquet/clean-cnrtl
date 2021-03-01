@@ -1,3 +1,3 @@
-const noComma = (str = '') => str.replace(/,$/, '');
+const noComma = (str = '') => str.replace(/^,|,$/g, '');
 
 exports.noComma = noComma;
