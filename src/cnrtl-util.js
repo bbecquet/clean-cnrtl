@@ -46,16 +46,25 @@ function transform(html) {
 function transformExamples($) {
   $('.tlf_cexemple').replaceWith((_, node) => {
     const $node = $(node);
-    // @TODO: composite texts with multiple <i> (ex: happens when the text includes [])
-    const citation = $node.children('i').first().text();
+    const citation = $node.html().split(/\((?!\.)/)[0];
     const author = $node.children('.tlf_cauteur').first().text();
-    const source = $node.children('.tlf_ctitre').first().text();
+    const title = $node.children('.tlf_ctitre').first().text();
+    const publi = $node.children('.tlf_cpublication').first().text();
     const date = $node.children('.tlf_cdate').first().text();
-
     // @TODO: extract page information
+
+    const sourceFields = [
+      noComma(author),
+      title && `<cite>${noComma(title)}</cite>`,
+      noComma(publi),
+      noComma(date),
+    ]
+      .filter(s => s)
+      .join(', ');
+
     return `<figure class="example">
       <blockquote>${citation}</blockquote>
-      <figcaption>${noComma(author)}, <cite>${noComma(source)}</cite>, ${noComma(date)}</figcaption>
+      <figcaption>${sourceFields}</figcaption>
     </figure>`;
   });
 }
