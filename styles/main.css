@@ -174,10 +174,12 @@ input[type='submit']:focus {
   border-color: var(--color-faded);
 }
 
+.resultHeader {
+  display: flex;
+}
 .cnrtlLink {
   font-size: var(--small);
-  display: block;
-  text-align: right;
+  margin-left: auto;
 }
 
 .tlf_parah {
