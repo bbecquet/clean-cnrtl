@@ -2,9 +2,12 @@
   --colot-background: #fcfbf7;
   --color-text: #111;
   --color-hi: #31814d;
+  --color-hi-active: #26643c;
   --color-faded: #ddd;
   --color-lightgray: #eee;
   --font-size: 21px;
+  --small: 0.75rem;
+  --smaller: 0.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,13 +34,13 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+html {
   height: 100%;
+  font: var(--font-size) / 1.5 Georgia, serif;
 }
 
 body {
-  font: var(--font-size) / 1.5 Georgia, serif;
+  height: 100%;
   color: var(--color-text);
   max-width: 800px;
   margin: 0 auto;
@@ -48,12 +51,17 @@ a {
   color: var(--color-hi);
 }
 
+a:hover {
+  color: --color-hi-active;
+  text-decoration: none;
+}
+
 a.external::after {
   display: inline-block;
   margin: 0 0.2rem;
   letter-spacing: -0.15em;
   content: '[🡥]';
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
 .home {
@@ -79,7 +87,7 @@ a.external::after {
   display: flex;
   justify-content: space-between;
   padding-bottom: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 .page > header a {
@@ -95,13 +103,8 @@ a.external::after {
   text-align: center;
   margin-top: 2rem;
   padding: 2rem 0 1rem;
-  font-size: 0.75rem;
+  font-size: var(--smaller);
 }
-
-/* 
-.searchForm .field {
-  flex-grow: 1;
-} */
 
 .wordInputWrapper {
   display: flex;
@@ -110,7 +113,7 @@ a.external::after {
   background: white;
   border: 1px solid var(--color-faded);
   border-radius: 2rem;
-  padding: 0.5rem;
+  padding: 0.25rem;
 }
 
 .wordInputWrapper:focus-within {
@@ -153,8 +156,9 @@ input[type='submit']:focus {
 }
 
 .cnrtlLink {
-  font-size: 0.75rem;
-  float: right;
+  font-size: var(--small);
+  display: block;
+  text-align: right;
 }
 
 .tlf_parah {
@@ -180,14 +184,23 @@ input[type='submit']:focus {
 }
 
 .example {
-  padding-left: 1rem;
+  padding-left: 2rem;
   margin: 0.5rem 0;
+  quotes: '«\00A0''\00A0»';
 }
 
 .example blockquote {
   font-style: italic;
+  font-size: var(--small);
+}
+
+.example blockquote:before {
+  content: open-quote;
+}
+.example blockquote:after {
+  content: close-quote;
 }
 
 .example figcaption {
-  font-size: 0.75rem;
+  font-size: var(--small);
 }

@@ -17,7 +17,8 @@
       </a>
       <form class="searchForm" action="/def" method="get">
         <div class="wordInputWrapper">
-          <input id="wordInput" type="text" name="word" aria-label="Chercher un mot" />
+          <input id="wordInput" type="text" name="word" aria-label="Chercher un mot" {{#if word}}value="{{{word}}}"
+            {{else}}autofocus{{/if}} />
           <input type="submit" value="Chercher" />
         </div>
       </form>

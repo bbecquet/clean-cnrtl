@@ -46,7 +46,10 @@ function transform(html) {
 function transformExamples($) {
   $('.tlf_cexemple').replaceWith((_, node) => {
     const $node = $(node);
-    const citation = $node.html().split(/\((?!\.)/)[0];
+    const citation = $node
+      .html()
+      .split(/\((?!\.)/)[0]
+      .trim();
     const author = $node.children('.tlf_cauteur').first().text();
     const title = $node.children('.tlf_ctitre').first().text();
     const publi = $node.children('.tlf_cpublication').first().text();
