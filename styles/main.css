@@ -15,6 +15,16 @@
   }
 }
 
+@media screen and (max-width: 600px) {
+  :root {
+    --font-size: 16px;
+  }
+
+  .page > header {
+    flex-direction: column;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -36,6 +46,14 @@ body {
 
 a {
   color: var(--color-hi);
+}
+
+a.external::after {
+  display: inline-block;
+  margin: 0 0.2rem;
+  letter-spacing: -0.15em;
+  content: '[🡥]';
+  text-decoration: none !important;
 }
 
 .home {
@@ -73,14 +91,8 @@ a {
   font-weight: normal;
 }
 
-@media screen and (max-width: 600px) {
-  .page > header {
-    flex-direction: column;
-  }
-}
-
 .page > footer {
-  text-align: right;
+  text-align: center;
   margin-top: 2rem;
   padding: 2rem 0 1rem;
   font-size: 0.75rem;
@@ -142,6 +154,7 @@ input[type='submit']:focus {
 
 .cnrtlLink {
   font-size: 0.75rem;
+  float: right;
 }
 
 .tlf_parah {
@@ -168,6 +181,7 @@ input[type='submit']:focus {
 
 .example {
   padding-left: 1rem;
+  margin: 0.5rem 0;
 }
 
 .example blockquote {
