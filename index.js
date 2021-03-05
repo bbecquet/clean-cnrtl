@@ -1,5 +1,8 @@
 const express = require('express');
+const { handlebars } = require('hbs');
 const { getDef, getCnrtlURL } = require('./src/cnrtl-util');
+const { registerInlineSVG } = require('./src/inlineSVG');
+registerInlineSVG(handlebars);
 
 const app = express();
 app.set('view engine', 'hbs');

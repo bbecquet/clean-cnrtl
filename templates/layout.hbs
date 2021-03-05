@@ -7,13 +7,18 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0" />
   <meta name="author" content="Benjamin Becquet" />
   <link rel="stylesheet" href="/styles/main.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body class="{{#unless word}}home{{/unless}}">
   <div class="page">
     <header>
       <a href="/def">
-        <h1>Simple TLFi</h1>
+        <h1 class="pageTitle">
+          <span class="icon">{{{inlineSVG "imgs/icon-book.svg"}}}</span>
+          <span class="text">Simple TLFi</span>
+        </h1>
       </a>
       <form class="searchForm" action="/def" method="get">
         <div class="wordInputWrapper">
