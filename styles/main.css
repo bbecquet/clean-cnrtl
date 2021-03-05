@@ -1,8 +1,18 @@
 :root {
+  --colot-background: #fcfbf7;
   --color-text: #111;
-  --color-hi: rgb(120, 49, 212);
-  --color-light: #ddd;
+  --color-hi: #31814d;
+  --color-faded: #ddd;
+  --color-lightgray: #eee;
   --font-size: 21px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --colot-background: #111;
+    --color-text: #ddd;
+    --color-faded: #888;
+  }
 }
 
 * {
@@ -11,34 +21,91 @@
   box-sizing: border-box;
 }
 
-html {
-  font: var(--font-size) / 1.5 Georgia;
-  color: var(--color-text);
+html,
+body {
+  height: 100%;
 }
 
 body {
+  font: var(--font-size) / 1.5 Georgia, serif;
+  color: var(--color-text);
   max-width: 800px;
   margin: 0 auto;
+  background-color: var(--colot-background);
+}
+
+a {
+  color: var(--color-hi);
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home .page {
+  margin-top: -30vh;
+}
+
+.home .page > header {
+  flex-direction: column;
 }
 
 .page {
   padding: 1rem;
+  flex-grow: 1;
+}
+
+.page > header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  margin-bottom: 3rem;
+}
+
+.page > header a {
+  text-decoration: none;
+}
+
+.page > header h1 {
+  font-family: Roboto, sans-serif;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 600px) {
+  .page > header {
+    flex-direction: column;
+  }
 }
 
 .page > footer {
   text-align: right;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--color-light);
+  margin-top: 2rem;
+  padding: 2rem 0 1rem;
   font-size: 0.75rem;
 }
 
-.searchForm {
+/* 
+.searchForm .field {
+  flex-grow: 1;
+} */
+
+.wordInputWrapper {
   display: flex;
+  align-items: center;
   column-gap: 0.5rem;
+  background: white;
+  border: 1px solid var(--color-faded);
+  border-radius: 2rem;
+  padding: 0.5rem;
 }
 
-.searchForm .field {
+.wordInputWrapper:focus-within {
+  box-shadow: 0 0 5px var(--color-faded);
+}
+
+#wordInput {
   flex-grow: 1;
 }
 
@@ -47,7 +114,29 @@ body {
   font-size: 0.75rem;
 }
 
-input[type='text'] {
+input {
+  min-height: 2rem;
+  padding: 0 0.5rem;
+  border: none;
+  background: transparent;
+}
+
+input:focus {
+  outline: 0;
+}
+
+input[type='submit'] {
+  background-color: var(--color-lightgray);
+  border-radius: 2rem;
+  padding: 0 0.5rem;
+  border: 1px solid transparent;
+}
+
+input[type='submit']:focus {
+  border-color: var(--color-faded);
+}
+
+#wordInput {
   width: 100%;
 }
 

@@ -3,23 +3,25 @@
 
 <head lang="fr">
   <meta charset="utf-8" />
-  <title>{{#if word}}Définition de "{{{ word }}}" - {{/if}}Clean CNRTL</title>
+  <title>{{#if word}}Définition de "{{{ word }}}" - {{/if}}Simple CNRTL</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0" />
   <meta name="author" content="Benjamin Becquet" />
   <link rel="stylesheet" href="/styles/main.css">
 </head>
 
-<body>
+<body class="{{#unless word}}home{{/unless}}">
   <div class="page">
-    <div>
+    <header>
+      <a href="/def">
+        <h1>Simple CNRTL</h1>
+      </a>
       <form class="searchForm" action="/def" method="get">
-        <div class="field">
-          <label for="wordInput">Chercher un mot</label>
-          <input id="wordInput" type="text" name="word" />
+        <div class="wordInputWrapper">
+          <input id="wordInput" type="text" name="word" aria-label="Chercher un mot" />
+          <input type="submit" value="Chercher" />
         </div>
-        <input type="submit" value="Chercher" />
       </form>
-    </div>
+    </header>
     <main>
       {{{ body }}}
     </main>
