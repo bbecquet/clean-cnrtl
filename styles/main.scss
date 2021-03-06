@@ -72,11 +72,11 @@ body {
 a {
   color: var(--color-hi);
   text-underline-offset: 2.5px;
-}
 
-a:hover {
-  color: var(--color-hi-active);
-  text-decoration: none;
+  &:hover {
+    color: var(--color-hi-active);
+    text-decoration: none;
+  }
 }
 
 p {
@@ -87,48 +87,52 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-.home .page {
-  margin-top: -30vh;
-}
+  .page {
+    margin-top: -30vh;
 
-.home .page > header {
-  flex-direction: column;
+    & > header {
+      flex-direction: column;
+    }
+  }
 }
 
 .page {
   padding: 1rem;
   flex-grow: 1;
-}
 
-.page > header {
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
-}
+  & > header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
 
-.page > header a {
-  text-decoration: none;
+    a {
+      text-decoration: none;
+    }
+  }
+
+  & > footer {
+    text-align: right;
+    margin-top: 2rem;
+    padding: 2rem 0 1rem;
+    font-size: var(--smaller);
+  }
 }
 
 .pageTitle {
   font-family: var(--sans-serif);
   font-weight: normal;
+
+  .icon {
+    display: inline-block;
+    transform-origin: 50% 50%;
+    transform: rotate(-33deg);
+  }
 }
 
-.pageTitle .icon {
-  display: inline-block;
-  transform-origin: 50% 50%;
-  transform: rotate(-33deg);
-}
-
-.page > footer {
-  text-align: right;
-  margin-top: 2rem;
-  padding: 2rem 0 1rem;
-  font-size: var(--smaller);
+.searchForm {
+  flex-basis: 50%;
 }
 
 .wordInputWrapper {
@@ -139,10 +143,10 @@ p {
   border: 1px solid var(--color-faded);
   border-radius: 2rem;
   padding: 0.25rem;
-}
 
-.wordInputWrapper:focus-within {
-  box-shadow: var(--shadow);
+  &:focus-within {
+    box-shadow: var(--shadow);
+  }
 }
 
 #wordInput {
@@ -163,28 +167,23 @@ p {
   align-items: center;
   background: transparent;
   transition: all ease 0.2s;
-}
 
-#wordInputSubmit:hover,
-#wordInputSubmit:focus {
-  outline: 0;
-  background-color: var(--color-lightgray);
-  border-color: var(--color-faded);
-}
+  img {
+    height: 50%;
+    filter: opacity(0.5);
+    transition: filter ease 0.2s;
+  }
 
-#wordInputSubmit img {
-  height: 50%;
-  filter: opacity(0.5);
-  transition: filter ease 0.2s;
-}
+  &:hover,
+  &:focus {
+    outline: 0;
+    background-color: var(--color-lightgray);
+    border-color: var(--color-faded);
 
-#wordInputSubmit:hover img,
-#wordInputSubmit:focus img {
-  filter: opacity(1);
-}
-
-.searchForm {
-  flex-basis: 50%;
+    img {
+      filter: opacity(1);
+    }
+  }
 }
 
 input {
@@ -192,15 +191,16 @@ input {
   padding: 0 0.5rem;
   border: none;
   background: transparent;
-}
 
-input:focus {
-  outline: 0;
+  &:focus {
+    outline: 0;
+  }
 }
 
 .resultHeader {
   display: flex;
 }
+
 .cnrtlLink {
   font-size: var(--small);
   margin-left: auto;
@@ -232,22 +232,23 @@ input:focus {
   padding-left: 2rem;
   margin: 0.5rem 0;
   quotes: '«\00A0''\00A0»';
-}
 
-.example blockquote {
-  font-style: italic;
-  font-size: var(--small);
-}
+  blockquote {
+    font-style: italic;
+    font-size: var(--small);
 
-.example blockquote:before {
-  content: open-quote;
-}
-.example blockquote:after {
-  content: close-quote;
-}
+    :before {
+      content: open-quote;
+    }
 
-.example figcaption {
-  font-size: var(--small);
+    :after {
+      content: close-quote;
+    }
+  }
+
+  figcaption {
+    font-size: var(--small);
+  }
 }
 
 #backToTop {
@@ -266,27 +267,27 @@ input:focus {
   pointer-events: none;
   opacity: 0;
   transition: all ease 0.2s;
-}
 
-#backToTop:before {
-  content: '';
-  display: block;
-  width: 0.75rem;
-  height: 0.75rem;
-  border-left: 0.25rem solid currentColor;
-  border-top: 0.25rem solid currentColor;
-  transform-origin: 50% 50%;
-  transform: translateY(0.2rem) rotate(45deg);
-}
+  &:before {
+    content: '';
+    display: block;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-left: 0.25rem solid currentColor;
+    border-top: 0.25rem solid currentColor;
+    transform-origin: 50% 50%;
+    transform: translateY(0.2rem) rotate(45deg);
+  }
 
-#backToTop.visible {
-  pointer-events: all;
-  opacity: 1;
-}
+  &.visible {
+    pointer-events: all;
+    opacity: 1;
+  }
 
-@media (hover: hover) {
-  #backToTop:hover {
-    background-color: var(--color-hi-active);
-    color: var(--color-lightgray);
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-hi-active);
+      color: var(--color-lightgray);
+    }
   }
 }

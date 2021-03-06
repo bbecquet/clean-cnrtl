@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "sass --no-source-map styles/main.scss styles/main.css",
+    "build-css:watch": "sass --watch --no-source-map styles/main.scss styles/main.css"
   },
   "author": "Benjamin Becquet (benjamin.becquet@gmail.com)",
   "license": "ISC",
@@ -13,7 +15,8 @@
     "express": "^4.16.4",
     "hbs": "^4.0.1",
     "request": "^2.88.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "sass": "^1.32.8"
   },
   "devDependencies": {
     "prettier": "2.2.1"
