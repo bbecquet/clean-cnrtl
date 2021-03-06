@@ -3,6 +3,14 @@
   <a class="external cnrtlLink" href="{{cnrtlLink}}">Voir les résultats sur le CNRTL</a>
 </div>
 {{{ def }}}
+<a id="backToTop" aria-hidden="true" href="#top"></a>
+<script>
+  const rootElement = document.documentElement;
+  const backToTop = document.getElementById('backToTop');
+  document.addEventListener("scroll", function () {
+    backToTop.classList.toggle('visible', rootElement.scrollTop > (rootElement.clientHeight / 2));
+  });
+</script>
 {{else}}
 <p>
 </p>

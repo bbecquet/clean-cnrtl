@@ -11,6 +11,7 @@
   --smaller: 0.7rem;
   --sans-serif: 'Helvetica Neue', Arial, sans-serif;
   --serif: Georgia, serif;
+  --shadow: 0 0 5px var(--color-faded);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -141,7 +142,7 @@ p {
 }
 
 .wordInputWrapper:focus-within {
-  box-shadow: 0 0 5px var(--color-faded);
+  box-shadow: var(--shadow);
 }
 
 #wordInput {
@@ -247,4 +248,45 @@ input:focus {
 
 .example figcaption {
   font-size: var(--small);
+}
+
+#backToTop {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  background-color: var(--color-faded);
+  color: var(--color-text);
+  pointer-events: none;
+  opacity: 0;
+  transition: all ease 0.2s;
+}
+
+#backToTop:before {
+  content: '';
+  display: block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-left: 0.25rem solid currentColor;
+  border-top: 0.25rem solid currentColor;
+  transform-origin: 50% 50%;
+  transform: translateY(0.2rem) rotate(45deg);
+}
+
+#backToTop.visible {
+  pointer-events: all;
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  #backToTop:hover {
+    background-color: var(--color-hi-active);
+    color: var(--color-lightgray);
+  }
 }
