@@ -49,6 +49,7 @@ function transformExamples($) {
     const citation = $node
       .html()
       .split(/\((?!\.)/)[0]
+      .replace(/ <\/i>$/, '</i>')
       .trim();
     const author = $node.children('.tlf_cauteur').first().text();
     const title = $node.children('.tlf_ctitre').first().text();
