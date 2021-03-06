@@ -1,0 +1,54 @@
+.resultHeader {
+  margin-top: 1rem;
+  display: flex;
+}
+
+.cnrtlLink {
+  font-size: var(--small);
+  margin-left: auto;
+}
+
+.tlf_parah {
+  margin-bottom: 2rem;
+}
+
+.tlf_parah .tlf_parah {
+  margin: 1rem 0 0.5rem;
+}
+
+.tlf_cvedette {
+  margin: 1.5rem 0;
+  font-size: 1.5rem;
+  color: var(--color-hi);
+}
+
+.tlf_tabulation {
+  margin-left: 1.5rem;
+}
+
+.tlf_cdefinition {
+  font-weight: bold;
+}
+
+.example {
+  padding-left: 2rem;
+  margin: 0.5rem 0;
+  quotes: '«\00A0''\00A0»';
+
+  blockquote {
+    font-style: italic;
+    font-size: var(--small);
+
+    :before {
+      content: open-quote;
+    }
+
+    :after {
+      content: close-quote;
+    }
+  }
+
+  figcaption {
+    font-size: var(--small);
+  }
+}
