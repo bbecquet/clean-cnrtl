@@ -151,6 +151,37 @@ p {
   margin-left: 0.5rem;
 }
 
+#wordInputSubmit {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 2rem;
+  padding: 0 0.5rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  transition: all ease 0.2s;
+}
+
+#wordInputSubmit:hover,
+#wordInputSubmit:focus {
+  outline: 0;
+  background-color: var(--color-lightgray);
+  border-color: var(--color-faded);
+}
+
+#wordInputSubmit img {
+  height: 50%;
+  filter: opacity(0.5);
+  transition: filter ease 0.2s;
+}
+
+#wordInputSubmit:hover img,
+#wordInputSubmit:focus img {
+  filter: opacity(1);
+}
+
 .searchForm {
   flex-basis: 50%;
 }
@@ -164,18 +195,6 @@ input {
 
 input:focus {
   outline: 0;
-}
-
-input[type='submit'] {
-  background-color: var(--color-lightgray);
-  border-radius: 2rem;
-  padding: 0 0.5rem;
-  border: 1px solid transparent;
-  cursor: pointer;
-}
-
-input[type='submit']:focus {
-  border-color: var(--color-faded);
 }
 
 .resultHeader {

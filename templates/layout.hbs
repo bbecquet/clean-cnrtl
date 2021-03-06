@@ -22,7 +22,9 @@
         <div class="wordInputWrapper">
           <input id="wordInput" type="text" name="word" aria-label="Chercher un mot" {{#if word}}value="{{{word}}}"
             {{else}}autofocus{{/if}} />
-          <input type="submit" value="Chercher" />
+          <button id="wordInputSubmit" type="submit" aria-label="Chercher">
+            <img src=" ../imgs/icon-mag-glass.svg" alt="" />
+          </button>
         </div>
       </form>
     </header>
