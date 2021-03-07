@@ -35,11 +35,11 @@
     font-style: italic;
     font-size: var(--small);
 
-    :before {
+    &:before {
       content: open-quote;
     }
 
-    :after {
+    &:after {
       content: close-quote;
     }
   }
