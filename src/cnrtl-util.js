@@ -34,7 +34,7 @@ function getCnrtlURL(word) {
 
 function extractDefinitionPart(html) {
   const $ = cheerio.load(html);
-  return $('#contentbox').html();
+  return $('#lexicontent').wrapInner('<section></section>').html();
 }
 
 function transform(html) {
