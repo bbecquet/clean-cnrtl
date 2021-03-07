@@ -47,11 +47,12 @@ function transformExamples($) {
   $('.tlf_cexemple').replaceWith((_, node) => {
     const $node = $(node);
     const rawHTML = $node.html();
+    // @TODO: increase robustness of all extraction rules
     const citation = rawHTML
-      .split(/\((?!\.)/)[0]
+      .split(/\((?!\.)/)[0] // most citations end with the '(' opening the source part
+      .split('<span')[0] // except some that don't put the source in '()'…
       .replace(/ <\/i>$/, '</i>')
       .trim();
-    // @TODO: increase robustness and manage errors
     const author = $node.children('.tlf_cauteur').first().text();
     const title = $node.children('.tlf_ctitre').first().text();
     const publi = $node.children('.tlf_cpublication').first().text();
