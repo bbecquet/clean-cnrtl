@@ -46,29 +46,32 @@ function transform(html) {
 function transformExamples($) {
   $('.tlf_cexemple').replaceWith((_, node) => {
     const $node = $(node);
-    const citation = $node
-      .html()
+    const rawHTML = $node.html();
+    const citation = rawHTML
       .split(/\((?!\.)/)[0]
       .replace(/ <\/i>$/, '</i>')
       .trim();
+    // @TODO: increase robustness and manage errors
     const author = $node.children('.tlf_cauteur').first().text();
     const title = $node.children('.tlf_ctitre').first().text();
     const publi = $node.children('.tlf_cpublication').first().text();
     const date = $node.children('.tlf_cdate').first().text();
-    // @TODO: extract page information
+    let page = $node.children('span').last()[0].nextSibling.nodeValue;
+    page = page.slice(0, page.lastIndexOf(')'));
 
     const sourceFields = [
       noComma(author),
       title && `<cite>${noComma(title)}</cite>`,
       noComma(publi),
       noComma(date),
+      noComma(page),
     ]
       .filter(s => s)
       .join(', ');
 
     return `<figure class="example">
       <blockquote>${citation}</blockquote>
-      <figcaption>${sourceFields}</figcaption>
+      <figcaption>${sourceFields}.</figcaption>
     </figure>`;
   });
 }
