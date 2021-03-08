@@ -58,6 +58,7 @@ function transformExamples($) {
     const publi = $node.children('.tlf_cpublication').first().text();
     const date = $node.children('.tlf_cdate').first().text();
     let page = $node.children('span').last()[0].nextSibling.nodeValue;
+    page = page || '';
     page = page.slice(0, page.lastIndexOf(')'));
 
     const sourceFields = [
