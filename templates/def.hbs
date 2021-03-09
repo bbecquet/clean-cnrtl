@@ -9,14 +9,20 @@
     </a>
     {{/each}}
   </nav>
+  {{#if defs.length}}
   <a class="external cnrtlLink" href="{{cnrtlLink}}">Voir sur le CNRTL</a>
+  {{/if}}
 </div>
 
+{{#if defs.length}}
 <article>
   {{#each defs}}
   <section class="def" id="section-{{@index}}">{{{this.def}}}</section>
   {{/each}}
 </article>
+{{else}}
+<p>Ce mot n'a pas été trouvé.</p>
+{{/if}}
 
 <a id="backToTop" aria-hidden="true" href="#top"></a>
 
