@@ -1,15 +1,26 @@
 .resultHeader {
   display: flex;
   justify-content: space-between;
-  margin: 1rem 0;
+  margin: 1rem -1rem;
+  padding: 0.5rem 1rem;
   position: sticky;
   top: 0;
   background-color: var(--color-background);
+  transition: all ease 0.2s;
+
+  &.sticked {
+    background-color: var(--color-hi-active);
+    color: var(--color-background);
+
+    a {
+      color: var(--color-lightGray);
+    }
+  }
 
   .homographs {
     display: flex;
     flex-grow: 1;
-    overflow-x: scroll;
+    overflow-x: auto;
 
     &[data-count='1'],
     &[data-count='0'] {
@@ -28,7 +39,7 @@
     }
 
     .wordClass {
-      display: block;
+      display: inline-block;
       font-size: var(--smaller);
       line-height: 1rem;
     }

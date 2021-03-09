@@ -1,5 +1,6 @@
 {{#if word}}
 
+<div class="resultHeader-stickyDetector"></div>
 <div class="resultHeader">
   <nav class="homographs" data-count={{{defs.length}}}>
     {{#each defs}}
@@ -32,6 +33,16 @@
   document.addEventListener("scroll", function () {
     backToTop.classList.toggle('visible', rootElement.scrollTop > (rootElement.clientHeight / 2));
   });
+
+  const observer = new IntersectionObserver(entries => {
+    if (entries[0].intersectionRatio === 0) {
+      document.querySelector('.resultHeader').classList.add('sticked');
+    } else if (entries[0].intersectionRatio === 1) {
+      document.querySelector('.resultHeader').classList.remove('sticked');
+    }
+  }, { threshold: [0, 1] });
+
+  observer.observe(document.querySelector('.resultHeader-stickyDetector'));
 </script>
 {{else}}
 <p>
