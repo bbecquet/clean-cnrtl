@@ -4,7 +4,12 @@ const cheerio = require('cheerio');
 const { noComma } = require('./utils');
 
 function getDef(word) {
-  return fetchDefinitions(word).then(transform);
+  return fetchDefinitions(word).then(defs =>
+    defs.map(({ def, homograph }) => ({
+      homograph: transformHomograph(homograph),
+      def: transformDef(def),
+    }))
+  );
 }
 
 /**
@@ -24,7 +29,6 @@ function fetchDefinitions(word) {
       .then(urls => Promise.all(urls.map(request)))
       // a full HTML page is returned each time
       .then(htmls => htmls.map(extractDefinitionPart))
-      .then(defs => defs.join(''))
   );
 }
 
@@ -34,10 +38,20 @@ function getCnrtlURL(word) {
 
 function extractDefinitionPart(html) {
   const $ = cheerio.load(html);
-  return $('#lexicontent').wrapInner('<section></section>').html();
+  return {
+    homograph: $('#vitemselected a').html(),
+    def: $('#lexicontent').html(),
+  };
 }
 
-function transform(html) {
+function transformHomograph(html) {
+  const $ = cheerio.load(html);
+  const wordForm = $('span').first().html();
+  const wordClass = $('span').last()[0].nextSibling.nodeValue;
+  return { wordForm, wordClass: noComma(wordClass).trim() };
+}
+
+function transformDef(html) {
   const $ = cheerio.load(html);
   transformExamples($);
   return $.html();

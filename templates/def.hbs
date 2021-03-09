@@ -1,9 +1,25 @@
 {{#if word}}
+
 <div class="resultHeader">
-  <a class="external cnrtlLink" href="{{cnrtlLink}}">Voir les résultats sur le CNRTL</a>
+  <nav class="homographs" data-count={{{defs.length}}}>
+    {{#each defs}}
+    <a class="homograph" href="#section-{{@index}}">
+      <span class="wordForm">{{{this.homograph.wordForm}}}</span>
+      <span class="wordClass">{{{this.homograph.wordClass}}}</span>
+    </a>
+    {{/each}}
+  </nav>
+  <a class="external cnrtlLink" href="{{cnrtlLink}}">Voir sur le CNRTL</a>
 </div>
-{{{ def }}}
+
+<article>
+  {{#each defs}}
+  <section class="def" id="section-{{@index}}">{{{this.def}}}</section>
+  {{/each}}
+</article>
+
 <a id="backToTop" aria-hidden="true" href="#top"></a>
+
 <script>
   const rootElement = document.documentElement;
   const backToTop = document.getElementById('backToTop');

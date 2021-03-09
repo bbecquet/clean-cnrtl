@@ -1,11 +1,52 @@
 .resultHeader {
-  margin-top: 1rem;
   display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  position: sticky;
+  top: 0;
+  background-color: var(--color-background);
+
+  .homographs {
+    display: flex;
+    flex-grow: 1;
+    overflow-x: scroll;
+
+    &[data-count='1'],
+    &[data-count='0'] {
+      display: none;
+    }
+
+    .homograph + .homograph {
+      padding-left: 0.75rem;
+      margin-left: 0.75rem;
+      border-left: 1px solid var(--color-faded);
+    }
+
+    .wordForm {
+      display: block;
+      font-size: var(--small);
+    }
+
+    .wordClass {
+      display: block;
+      font-size: var(--smaller);
+      line-height: 1rem;
+    }
+  }
+
+  .cnrtlLink {
+    font-size: var(--smaller);
+    text-align: right;
+    margin-left: auto;
+  }
 }
 
-.cnrtlLink {
-  font-size: var(--small);
-  margin-left: auto;
+section.def {
+  scroll-margin-top: 4rem;
+}
+
+.tlf_cmot {
+  font-weight: bold;
 }
 
 .tlf_parah {
@@ -19,7 +60,6 @@
 .tlf_cvedette {
   margin: 1.5rem 0;
   font-size: 1.5rem;
-  color: var(--color-hi);
 }
 
 .tlf_cdefinition {

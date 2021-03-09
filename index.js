@@ -16,9 +16,9 @@ app.use(function (req, _res, next) {
 app.get('/def/:word', function (req, res, next) {
   const word = req.params.word;
   getDef(word)
-    .then(body => {
+    .then(defs => {
       res.render('def', {
-        def: body,
+        defs,
         word,
         cnrtlLink: getCnrtlURL(word),
       });
