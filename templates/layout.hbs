@@ -28,6 +28,49 @@
         </div>
       </form>
     </header>
+    <details aria-hidden="true">
+      <summary>Préférences d'affichage</summary>
+      <div id="settings">
+        <div class="setting">
+          <div class="setting-title">Thème</div>
+          <label>
+            <input type="radio" name="theme" value="auto" checked>
+            <span class="setting-label">Auto</span>
+          </label>
+          <label>
+            <input type="radio" name="theme" value="light">
+            <span class="setting-label">Clair</span>
+          </label>
+          <label>
+            <input type="radio" name="theme" value="dark">
+            <span class="setting-label">Sombre</span>
+          </label>
+        </div>
+        <div class="setting">
+          <div class="setting-title">Police</div>
+          <label>
+            <input type="radio" name="font" value="serif" checked>
+            <span class="setting-label">Serif</span>
+          </label>
+          <label>
+            <input type="radio" name="font" value="sans-serif">
+            <span class="setting-label">Sans-serif</span>
+            </span>
+          </label>
+        </div>
+        <div class="setting">
+          <div class="setting-title">Alignement</div>
+          <label>
+            <input type="radio" name="align" value="left" checked>
+            <span class="setting-label">Gauche</span>
+          </label>
+          <label>
+            <input type="radio" name="align" value="justify">
+            <span class="setting-label">Justifié</span>
+          </label>
+        </div>
+      </div>
+    </details>
     <main>
       {{{ body }}}
     </main>
@@ -42,6 +85,65 @@
           href="mailto:benjamin@bbecquet.net?subject=Simple CNRTL">Me contacter.</a></p>
     </footer>
   </div>
+  <script>
+    function restoreSavedSettings() {
+      Object.keys(localStorage)
+        .filter(key => key.startsWith('setting-'))
+        .map(key => ({
+          name: key.substring(8),
+          value: localStorage.getItem(key),
+        }))
+        .forEach(({ name, value }) => {
+          const selectedOption = document.querySelector(`#settings input[type=radio][name=${name}][value=${value}]`);
+          if (!selectedOption) { return; }
+          selectedOption.checked = true;
+          selectedOption.dispatchEvent(new Event('change'));
+        });
+    }
+
+    function saveSetting({ name, value }) {
+      const storageName = `setting-${name}`;
+      localStorage.setItem(storageName, value);
+    }
+
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    window.addEventListener('load', () => {
+      const root = document.documentElement;
+
+      const autoDarkModeHandler = () => {
+        const darkModeOn = darkModeMediaQuery.matches;
+        root.dataset.theme = darkModeOn ? 'dark' : 'light';
+      };
+
+      document.querySelectorAll('#settings input[type=radio]')
+        .forEach(radio => {
+          radio.addEventListener('change', e => {
+            const { name, value } = e.target;
+            switch (name) {
+              case 'font':
+                root.style.setProperty('--setting-font', `var(--${value})`);
+                break;
+              case 'align':
+                root.style.setProperty('--setting-align', value);
+                break;
+              case 'theme':
+                if (value === 'auto') {
+                  autoDarkModeHandler();
+                  darkModeMediaQuery.addListener(autoDarkModeHandler);
+                } else {
+                  darkModeMediaQuery.removeListener(autoDarkModeHandler);
+                  root.dataset.theme = value;
+                }
+                break;
+            }
+            saveSetting({ name, value });
+          })
+        });
+
+      restoreSavedSettings();
+    });
+  </script>
 </body>
 
 </html>

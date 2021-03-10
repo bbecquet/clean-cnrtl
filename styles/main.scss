@@ -12,18 +12,19 @@
   --sans-serif: 'Helvetica Neue', Arial, sans-serif;
   --serif: Georgia, serif;
   --shadow: 0 0 5px var(--color-faded);
+  --setting-font: var(--serif);
+  --setting-align: 'left';
+  --setting-theme: 'auto';
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: #1f2327;
-    --color-text: #ddd;
-    --color-hi: #ef9d1c;
-    --color-hi-active: #c58929;
-    --color-faded: #888;
-    --color-form: #e0effe;
-    --color-lightgray: #a1bfdd;
-  }
+[data-theme='dark'] {
+  --color-background: #1f2327;
+  --color-text: #ddd;
+  --color-hi: #ef9d1c;
+  --color-hi-active: #c58929;
+  --color-faded: #888;
+  --color-form: #e0effe;
+  --color-lightgray: #a1bfdd;
 }
 
 @media screen and (max-width: 600px) {
@@ -58,13 +59,13 @@
 
 html {
   height: 100%;
-  font: var(--font-size) / 1.5 var(--serif);
+  font: var(--font-size) / 1.5 var(--sans-serif);
 }
 
 body {
   height: 100%;
   color: var(--color-text);
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   background-color: var(--color-background);
 }
@@ -127,6 +128,11 @@ p {
     transform-origin: 50% 50%;
     transform: rotate(-33deg);
   }
+}
+
+main {
+  font-family: var(--setting-font);
+  text-align: var(--setting-align);
 }
 
 @import './controls.scss';
