@@ -1,8 +1,8 @@
 {{#if word}}
 
 <div class="resultHeader-stickyDetector"></div>
-<div class="resultHeader">
-  <nav class="homographs" data-count={{{defs.length}}}>
+<div class="resultHeader" data-count={{{defs.length}}}>
+  <nav class="homographs">
     {{#each defs}}
     <a class="homograph" href="#section-{{@index}}">
       <span class="wordForm">{{{this.homograph.wordForm}}}</span>

@@ -8,6 +8,11 @@
   background-color: var(--color-background);
   transition: all ease 0.2s;
 
+  &[data-count='1'],
+  &[data-count='0'] {
+    display: none;
+  }
+
   &.sticked {
     background-color: var(--color-hi-active);
     color: var(--color-background);
@@ -21,11 +26,6 @@
     display: flex;
     flex-grow: 1;
     overflow-x: auto;
-
-    &[data-count='1'],
-    &[data-count='0'] {
-      display: none;
-    }
 
     .homograph + .homograph {
       padding-left: 0.75rem;
