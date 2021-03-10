@@ -22,7 +22,8 @@
         <form class="searchForm" action="/def" method="get">
           <div class="wordInputWrapper">
             <input id="wordInput" type="text" name="word" aria-label="Chercher un mot" {{#if word}}value="{{{word}}}"
-              {{else}}autofocus{{/if}} />
+              class="filled" {{else}}autofocus{{/if}} />
+            <button id="wordInputClear" type="button" aria-label="Effacer"></button>
             <button id="wordInputSubmit" type="submit" aria-label="Chercher">
               <img src=" ../imgs/icon-mag-glass.svg" alt="" />
             </button>
@@ -146,9 +147,21 @@
 
       restoreSavedSettings();
 
-      document.getElementById('settingsToggle').addEventListener('click', function (e) {
-        document.getElementById('settingsToggle').classList.toggle('pressed');
+      const settingsToggle = document.getElementById('settingsToggle');
+      settingsToggle.addEventListener('click', function (e) {
+        settingsToggle.classList.toggle('pressed');
         document.getElementById('settings').classList.toggle('hidden');
+      });
+
+      const wordInput = document.getElementById('wordInput');
+      wordInput.addEventListener('input', function (e) {
+        wordInput.classList.toggle('filled', e.target.value);
+      });
+
+      document.getElementById('wordInputClear').addEventListener('click', function () {
+        wordInput.value = '';
+        wordInput.dispatchEvent(new Event('input'));
+        wordInput.focus();
       });
     });
   </script>
