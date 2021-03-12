@@ -139,13 +139,20 @@ input[type='text'] {
   padding: 0 1rem;
   justify-content: flex-end;
   border-bottom: 1px solid var(--color-faded);
+  border-top: 1px solid var(--color-faded);
+  transition: all ease 0.5s;
+  height: 4.5rem;
+  opacity: 1;
+  background-color: var(--color-lightgray);
+  box-shadow: var(--shadow) inset;
 
   &.hidden {
-    display: none;
+    opacity: 0;
+    height: 0;
   }
 
   .setting {
-    padding-bottom: 0.5rem;
+    padding: 0.25rem 0 0.5rem 0;
     & + .setting {
       padding-left: 0.75rem;
       margin-left: 0.75rem;
