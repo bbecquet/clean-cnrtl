@@ -36,41 +36,46 @@
     <div id="settings" class="hidden">
       <div class="setting">
         <div class="setting-title">Thème</div>
-        <label>
-          <input type="radio" name="theme" value="auto" checked>
-          <span class="setting-label">Auto</span>
-        </label>
-        <label>
-          <input type="radio" name="theme" value="light">
-          <span class="setting-label">Clair</span>
-        </label>
-        <label>
-          <input type="radio" name="theme" value="dark">
-          <span class="setting-label">Sombre</span>
-        </label>
+        <div class="setting-group">
+          <label>
+            <input type="radio" name="theme" value="auto" checked>
+            <span class="setting-label">Auto</span>
+          </label>
+          <label>
+            <input type="radio" name="theme" value="light">
+            <span class="setting-label" title="Clair">{{{inlineSVG "imgs/icon-sun.svg"}}}</span>
+          </label>
+          <label>
+            <input type="radio" name="theme" value="dark">
+            <span class="setting-label" title="Sombre">{{{inlineSVG "imgs/icon-moon.svg"}}}</span>
+          </label>
+        </div>
       </div>
       <div class="setting">
         <div class="setting-title">Police</div>
-        <label>
-          <input type="radio" name="font" value="serif" checked>
-          <span class="setting-label">Serif</span>
-        </label>
-        <label>
-          <input type="radio" name="font" value="sans-serif">
-          <span class="setting-label">Sans-serif</span>
-          </span>
-        </label>
+        <div class="setting-group">
+          <label>
+            <input type="radio" name="font" value="serif" checked>
+            <span class="setting-label" title="Serif">{{{inlineSVG "imgs/icon-serif.svg"}}}</span>
+          </label>
+          <label>
+            <input type="radio" name="font" value="sans-serif">
+            <span class="setting-label" title="Sans serif">{{{inlineSVG "imgs/icon-sans-serif.svg"}}}</span>
+          </label>
+        </div>
       </div>
       <div class="setting">
         <div class="setting-title">Alignement</div>
-        <label>
-          <input type="radio" name="align" value="left" checked>
-          <span class="setting-label">Gauche</span>
-        </label>
-        <label>
-          <input type="radio" name="align" value="justify">
-          <span class="setting-label">Justifié</span>
-        </label>
+        <div class="setting-group">
+          <label>
+            <input type="radio" name="align" value="left" checked>
+            <span class="setting-label" title="Gauche">{{{inlineSVG "imgs/icon-align-left.svg"}}}</span>
+          </label>
+          <label>
+            <input type="radio" name="align" value="justify">
+            <span class="setting-label" title="Justifié">{{{inlineSVG "imgs/icon-align-justify.svg"}}}</span>
+          </label>
+        </div>
       </div>
     </div>
     <main>
