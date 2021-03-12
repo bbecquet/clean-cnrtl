@@ -13,31 +13,9 @@ app.use(function (req, _res, next) {
   next();
 });
 
-app.get('/def/:word', function (req, res, next) {
-  const word = req.params.word;
-  getDef(word)
-    .then(defs => {
-      res.render('def', {
-        defs,
-        word,
-        cnrtlLink: getCnrtlURL(word),
-      });
-    })
-    .catch(error => {
-      console.error(error);
-      next();
-    });
-});
+const defs = require('./defRoutes');
 
-app.get('/def', function (req, res, next) {
-  const word = req.query['word'];
-  if (word) {
-    res.redirect(`/def/${word}`);
-  } else {
-    res.render('def');
-  }
-});
-
+app.use('/def', defs);
 app.use(express.static(__dirname));
 
 // Handle 404
