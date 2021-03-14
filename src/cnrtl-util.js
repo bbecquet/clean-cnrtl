@@ -33,7 +33,7 @@ function fetchDefinitions(word) {
 }
 
 function getCnrtlURL(word) {
-  return `https://www.cnrtl.fr/definition/${word}`
+  return encodeURI(`https://www.cnrtl.fr/definition/${word}`)
 }
 
 function extractDefinitionPart(html) {
