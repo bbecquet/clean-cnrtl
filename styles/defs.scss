@@ -1,7 +1,7 @@
 .resultHeader {
   display: flex;
   justify-content: space-between;
-  margin: 1rem -1rem;
+  margin: 1rem -1rem 0;
   padding: 0.5rem 1rem;
   position: sticky;
   top: 0;
@@ -53,7 +53,13 @@
 }
 
 section.def {
-  scroll-margin-top: 4rem;
+  scroll-margin: 3rem 0;
+  padding-top: 1.5rem;
+
+  & + & {
+    border-top: 1px solid var(--color-faded);
+    margin-top: 1.5rem;
+  }
 }
 
 .tlf_cmot {
@@ -69,7 +75,7 @@ section.def {
 }
 
 .tlf_cvedette {
-  margin: 1.5rem 0;
+  margin-bottom: 1.5rem;
   font-size: 1.5rem;
 }
 
