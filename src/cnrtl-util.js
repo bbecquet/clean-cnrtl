@@ -61,9 +61,14 @@ function transformDef(html) {
 }
 
 function transformTypography(html) {
-  const NARROW_NBSP = ' ';
-  return html.replace(/\.{3}/g, '…'); // replace three dots by the real ellipsis character
-  //    .replace(/(\S)([:;])/g, `$1${NARROW_NBSP}$2`) // space before :;
+  const NBSP = '&nbsp;'; // use normal instead of narrow NBSP for now, until we increase the parsing robustness…
+  return html
+    .replace(/\.{3}/g, '…') // replace three dots by the real ellipsis character
+    .replace(/(\S)([;:])/g, `$1${NBSP}$2`) // space before :;
+    .replace(/\.([\w])/g, '. $1') // space after dot
+    .replace(/« /g, `«${NBSP}`) // nbsp before/after quotes
+    .replace(/ »/g, `${NBSP}»`)
+    .replace(/,,(.*)``/g, `«${NBSP}$1${NBSP}»`);
 }
 
 function transformNumbering(html) {
@@ -72,8 +77,16 @@ function transformNumbering(html) {
 
 function transformStruct(html) {
   const $ = cheerio.load(html);
+  transformHeadings($);
   transformExamples($);
   return $.html();
+}
+
+function transformHeadings($) {
+  $('.tlf_cvedette').replaceWith((_, node) => {
+    const $node = $(node);
+    return `<h2 class="defWord">${$node.html()}</h2>`;
+  });
 }
 
 function transformExamples($) {

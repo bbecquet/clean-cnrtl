@@ -75,9 +75,14 @@ section.def {
   margin: 1rem 0 0.5rem;
 }
 
-.tlf_cvedette {
+h2.defWord {
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
+  font-weight: normal;
+
+  .tlf_cmot {
+    font-weight: bold;
+  }
 }
 
 .tlf_cdefinition {
