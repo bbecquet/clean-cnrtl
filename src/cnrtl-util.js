@@ -52,6 +52,25 @@ function transformHomograph(html) {
 }
 
 function transformDef(html) {
+  // @TODO: chain à la lodash/ramda
+  let transformed = html;
+  transformed = transformStruct(transformed);
+  transformed = transformNumbering(transformed);
+  transformed = transformTypography(transformed);
+  return transformed;
+}
+
+function transformTypography(html) {
+  const NARROW_NBSP = ' ';
+  return html.replace(/\.{3}/g, '…'); // replace three dots by the real ellipsis character
+  //    .replace(/(\S)([:;])/g, `$1${NARROW_NBSP}$2`) // space before :;
+}
+
+function transformNumbering(html) {
+  return html.replace(/♦/g, '⬩'); // replace diamond characters that are rendered as red in Mobile Chrome
+}
+
+function transformStruct(html) {
   const $ = cheerio.load(html);
   transformExamples($);
   return $.html();
