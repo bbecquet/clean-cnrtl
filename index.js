@@ -1,9 +1,8 @@
 const express = require('express')
-const { handlebars } = require('hbs')
-const { registerInlineSVG } = require('./src/inlineSVG')
-registerInlineSVG(handlebars)
+const cookieParser = require('cookie-parser')
 
 const app = express()
+app.use(cookieParser())
 app.set('view engine', 'hbs')
 app.set('views', __dirname + '/templates')
 

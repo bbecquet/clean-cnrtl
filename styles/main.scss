@@ -14,11 +14,11 @@
   --serif: Georgia, serif;
   --shadow: 0 0 5px var(--color-faded);
   --setting-font: var(--serif);
-  --setting-align: 'left';
+  --setting-align: auto;
   --setting-theme: 'auto';
 }
 
-[data-theme='dark'] {
+@mixin darkMode {
   --color-dark: #1f2327;
   --color-background: var(--color-dark);
   --color-text: #ddd;
@@ -28,6 +28,25 @@
   --color-form: #e0effe;
   --color-lightgray: #462c08;
   --shadow: 0 0 5px var(--color-dark);
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-setting_theme=''],
+  [data-setting_theme='auto'] {
+    @include darkMode;
+  }
+}
+
+[data-setting_theme='dark'] {
+  @include darkMode;
+}
+
+[data-setting_align='justify'] {
+  --setting-align: justify;
+}
+
+[data-setting_font='sans-serif'] {
+  --setting-font: var(--sans-serif);
 }
 
 @media screen and (max-width: 600px) {

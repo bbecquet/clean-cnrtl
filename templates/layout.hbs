@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-setting_theme="{{{cookies.setting_theme}}}" data-setting_font="{{{cookies.setting_font}}}"
+  data-setting_align="{{{cookies.setting_align}}}">
 
 <head>
   <meta charset="utf-8" />
@@ -38,15 +39,18 @@
         <div class="setting-title">Thème</div>
         <div class="setting-group">
           <label>
-            <input type="radio" name="theme" value="auto" checked>
+            <input type="radio" name="theme" value="auto"
+              {{#ifEquals cookies.setting_theme 'auto'}}checked{{else}}{{#ifEquals cookies.setting_theme null}}checked{{/ifEquals}}{{/ifEquals}}>
             <span class="setting-label">Auto</span>
           </label>
           <label>
-            <input type="radio" name="theme" value="light">
+            <input type="radio" name="theme" value="light"
+              {{#ifEquals cookies.setting_theme 'light'}}checked{{/ifEquals}}>
             <span class="setting-label" title="Clair">{{{inlineSVG "imgs/icon-sun.svg"}}}</span>
           </label>
           <label>
-            <input type="radio" name="theme" value="dark">
+            <input type="radio" name="theme" value="dark"
+              {{#ifEquals cookies.setting_theme 'dark'}}checked{{/ifEquals}}>
             <span class="setting-label" title="Sombre">{{{inlineSVG "imgs/icon-moon.svg"}}}</span>
           </label>
         </div>
@@ -55,11 +59,13 @@
         <div class="setting-title">Police</div>
         <div class="setting-group">
           <label>
-            <input type="radio" name="font" value="serif" checked>
+            <input type="radio" name="font" value="serif"
+              {{#ifEquals cookies.setting_font 'serif'}}checked{{else}}{{#ifEquals cookies.setting_font null}}checked{{/ifEquals}}{{/ifEquals}}>
             <span class="setting-label" title="Serif">{{{inlineSVG "imgs/icon-serif.svg"}}}</span>
           </label>
           <label>
-            <input type="radio" name="font" value="sans-serif">
+            <input type="radio" name="font" value="sans-serif"
+              {{#ifEquals cookies.setting_font 'sans-serif'}}checked{{/ifEquals}}>
             <span class="setting-label" title="Sans serif">{{{inlineSVG "imgs/icon-sans-serif.svg"}}}</span>
           </label>
         </div>
@@ -68,11 +74,13 @@
         <div class="setting-title">Alignement</div>
         <div class="setting-group">
           <label>
-            <input type="radio" name="align" value="left" checked>
+            <input type="radio" name="align" value="left"
+              {{#ifEquals cookies.setting_align 'left'}}checked{{else}}{{#ifEquals cookies.setting_align null}}checked{{/ifEquals}}{{/ifEquals}}>
             <span class="setting-label" title="Gauche">{{{inlineSVG "imgs/icon-align-left.svg"}}}</span>
           </label>
           <label>
-            <input type="radio" name="align" value="justify">
+            <input type="radio" name="align" value="justify"
+              {{#ifEquals cookies.setting_align 'justify'}}checked{{/ifEquals}}>
             <span class="setting-label" title="Justifié">{{{inlineSVG "imgs/icon-align-justify.svg"}}}</span>
           </label>
         </div>
@@ -93,64 +101,19 @@
     </footer>
   </div>
   <script>
-    function restoreSavedSettings() {
-      Object.keys(localStorage)
-        .filter(key => key.startsWith('setting-'))
-        .map(key => ({
-          name: key.substring(8),
-          value: localStorage.getItem(key),
-        }))
-        .forEach(({ name, value }) => {
-          const selectedOption = document.querySelector(`#settings input[type=radio][name=${name}][value=${value}]`);
-          if (!selectedOption) { return; }
-          selectedOption.checked = true;
-        });
-
-      document.querySelectorAll(`#settings input[type=radio]:checked`)
-        .forEach(option => { option.dispatchEvent(new Event('change')); })
-    }
-
-    function saveSetting({ name, value }) {
-      const storageName = `setting-${name}`;
-      localStorage.setItem(storageName, value);
-    }
-
-    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
     window.addEventListener('load', () => {
       const root = document.documentElement;
-
-      const autoDarkModeHandler = () => {
-        const darkModeOn = darkModeMediaQuery.matches;
-        root.dataset.theme = darkModeOn ? 'dark' : 'light';
-      };
 
       document.querySelectorAll('#settings input[type=radio]')
         .forEach(radio => {
           radio.addEventListener('change', e => {
             const { name, value } = e.target;
-            switch (name) {
-              case 'font':
-                root.style.setProperty('--setting-font', `var(--${value})`);
-                break;
-              case 'align':
-                root.style.setProperty('--setting-align', value);
-                break;
-              case 'theme':
-                if (value === 'auto') {
-                  autoDarkModeHandler();
-                  darkModeMediaQuery.addListener(autoDarkModeHandler);
-                } else {
-                  darkModeMediaQuery.removeListener(autoDarkModeHandler);
-                  root.dataset.theme = value;
-                }
-                break;
-            }
-            saveSetting({ name, value });
+            // apply the setting right away
+            root.dataset[`setting_${name}`] = value;
+            // save it as cookie for further server rendering
+            document.cookie = `setting_${name}=${value}`;
           })
         });
-
-      restoreSavedSettings();
 
       const settingsToggle = document.getElementById('settingsToggle');
       settingsToggle.addEventListener('click', function (e) {

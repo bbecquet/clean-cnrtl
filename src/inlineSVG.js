@@ -1,4 +1,3 @@
-const { handlebars } = require('hbs')
 const fs = require('fs')
 
 const inlineSVG = iconName => {
@@ -11,8 +10,4 @@ const inlineSVG = iconName => {
   }
 }
 
-function registerInlineSVG(handlebars) {
-  handlebars.registerHelper('inlineSVG', inlineSVG)
-}
-
-exports.registerInlineSVG = registerInlineSVG
+exports.inlineSVG = inlineSVG

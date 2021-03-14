@@ -1,8 +1,13 @@
 const express = require('express')
 const { handlebars } = require('hbs')
+const { inlineSVG } = require('./src/inlineSVG')
+handlebars.registerHelper('inlineSVG', inlineSVG)
+
+handlebars.registerHelper('ifEquals', function (arg1, arg2, options) {
+  return arg1 == arg2 ? options.fn(this) : options.inverse(this)
+})
+
 const { getDef, getCnrtlURL } = require('./src/cnrtl-util')
-const { registerInlineSVG } = require('./src/inlineSVG')
-registerInlineSVG(handlebars)
 
 const router = express.Router()
 
@@ -14,6 +19,7 @@ router.get('/:word', function (req, res, next) {
         defs,
         word,
         cnrtlLink: getCnrtlURL(word),
+        cookies: req.cookies,
       })
     })
     .catch(error => {
@@ -27,7 +33,9 @@ router.get('/', function (req, res, next) {
   if (word) {
     res.redirect(`/def/${word}`)
   } else {
-    res.render('def')
+    res.render('def', {
+      cookies: req.cookies,
+    })
   }
 })
 

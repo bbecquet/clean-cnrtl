@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.5",
+    "cookie-parser": "^1.4.5",
     "express": "^4.16.4",
     "hbs": "^4.0.1",
     "request": "^2.88.0",
