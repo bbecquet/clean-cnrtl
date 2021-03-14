@@ -142,5 +142,9 @@ main {
   text-align: var(--setting-align);
 }
 
+.errorMsg {
+  margin-top: 3rem;
+}
+
 @import './controls.scss';
 @import './defs.scss';
