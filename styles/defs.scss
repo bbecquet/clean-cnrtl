@@ -1,7 +1,5 @@
 .resultHeader {
-  display: flex;
-  justify-content: space-between;
-  margin: 1rem -1rem 0;
+  margin: 0 -1rem;
   padding: 0.5rem 1rem;
   position: sticky;
   top: 0;
@@ -45,11 +43,20 @@
       line-height: 1rem;
     }
   }
+}
+
+.cnrtlLink-wrapper {
+  display: flex;
 
   .cnrtlLink {
     font-size: var(--smaller);
     text-align: right;
     margin-left: auto;
+    padding: 0.25rem;
+  }
+
+  svg {
+    margin-left: 0.25rem;
   }
 }
 

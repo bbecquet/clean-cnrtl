@@ -1,5 +1,12 @@
 {{#if word}}
 
+{{#if defs.length}}
+<div class="cnrtlLink-wrapper">
+  <a class="external cnrtlLink" href="{{cnrtlLink}}" target="_blank">Voir sur le CNRTL
+    {{{inlineSVG "imgs/icon-external-link.svg"}}}</a>
+</div>
+{{/if}}
+
 <div class="resultHeader-stickyDetector"></div>
 <div class="resultHeader" data-count={{{defs.length}}}>
   <nav class="homographs">
@@ -10,9 +17,6 @@
     </a>
     {{/each}}
   </nav>
-  {{!-- {{#if defs.length}}
-  <a class="external cnrtlLink" href="{{cnrtlLink}}">Voir sur le CNRTL</a>
-  {{/if}} --}}
 </div>
 
 {{#if defs.length}}
