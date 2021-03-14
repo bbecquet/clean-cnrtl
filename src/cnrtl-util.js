@@ -17,19 +17,19 @@ function getDef(word) {
  * @param {string} word the word to look for
  */
 function fetchDefinitions(word) {
-  return (
-    request(getCnrtlURL(word))
-      .then(html => {
-        const $ = cheerio.load(html)
-        // the number of tabs on the first result page gives the index of requests to be made
-        return $('#vtoolbar li a')
-          .map(index => `${getCnrtlURL(word)}//${index}`)
-          .get()
-      })
-      .then(urls => Promise.all(urls.map(request)))
+  return request(getCnrtlURL(word))
+    .then(html => {
+      const $ = cheerio.load(html)
+      // make a request for each "tab" index, except the first one we already have
+      const tabCount = $('#vtoolbar li a').length
       // a full HTML page is returned each time
-      .then(htmls => htmls.map(extractDefinitionPart))
-  )
+      const htmls = [$.html()]
+      for (let i = 1; i < tabCount; i++) {
+        htmls.push(request(`${getCnrtlURL(word)}//${i}`)) // urls on CNRTL have two slashes ¯\_(ツ)_/¯
+      }
+      return Promise.all(htmls)
+    })
+    .then(htmls => htmls.map(extractDefinitionPart))
 }
 
 function getCnrtlURL(word) {
