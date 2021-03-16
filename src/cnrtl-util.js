@@ -108,11 +108,11 @@ function transformExamples($) {
     page = page.slice(0, page.lastIndexOf(')'))
 
     const sourceFields = [
-      noComma(author),
+      author && `<span class="source-author">${noComma(author)}</span>`,
       title && `<cite>${noComma(title)}</cite>`,
-      noComma(publi),
-      noComma(date),
-      noComma(page),
+      publi && `<span class="source-publi">${noComma(publi)}</span>`,
+      date && `<span class="source-date">${noComma(date)}</span>`,
+      page && `<span class="source-page">${noComma(page)}</span>`,
     ]
       .filter(s => s)
       .join(', ')

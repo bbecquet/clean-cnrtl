@@ -104,6 +104,7 @@ h2.defWord {
   blockquote {
     font-style: italic;
     font-size: var(--small);
+    margin-bottom: 0.25rem;
 
     &:before {
       content: open-quote;
@@ -115,6 +116,14 @@ h2.defWord {
   }
 
   figcaption {
-    font-size: var(--small);
+    font-size: var(--smaller);
+
+    &:before {
+      content: '— ';
+    }
+  }
+
+  .source-author {
+    font-variant: small-caps;
   }
 }
