@@ -1,7 +1,7 @@
 const request = require('request-promise')
 const cheerio = require('cheerio')
 
-const { noComma } = require('./utils')
+const { noComma, removeFromEnd } = require('./utils')
 
 function getDef(word) {
   return fetchDefinitions(word).then(defs =>
@@ -93,10 +93,10 @@ function transformExamples($) {
   $('.tlf_cexemple').replaceWith((_, node) => {
     const $node = $(node)
     const rawHTML = $node.html()
-    // @TODO: increase robustness of all extraction rules
-    const citation = rawHTML
-      .split(/\((?!\.)/)[0] // most citations end with the '(' opening the source part
-      .split('<span')[0] // except some that don't put the source in '()'…
+
+    const citationEnd = rawHTML.indexOf('<span class="tlf_cauteur"')
+
+    let citation = removeFromEnd(rawHTML.substring(0, citationEnd), ['(', ' '])
       .replace(/ <\/i>$/, '</i>')
       .trim()
     const author = $node.children('.tlf_cauteur').first().text()
