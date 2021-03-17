@@ -1,9 +1,10 @@
 .resultHeader {
+  --ribbon-color: var(--color-background);
   margin: 0 -1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0;
   position: sticky;
   top: 0;
-  background-color: var(--color-background);
+  background-color: var(--ribbon-color);
   transition: all ease 0.2s;
 
   &[data-count='1'],
@@ -12,7 +13,7 @@
   }
 
   &.sticked {
-    background-color: var(--color-hi-active);
+    --ribbon-color: var(--color-hi-active);
     color: var(--color-background);
     box-shadow: var(--shadow);
 
@@ -26,9 +27,11 @@
     flex-grow: 1;
     overflow-x: auto;
 
+    .homograph {
+      padding: 0 1rem;
+    }
+
     .homograph + .homograph {
-      padding-left: 0.75rem;
-      margin-left: 0.75rem;
       border-left: 1px solid var(--color-faded);
     }
 
