@@ -31,7 +31,7 @@ router.get('/:word', function (req, res, next) {
 router.get('/', function (req, res, next) {
   const word = req.query['word']
   if (word) {
-    res.redirect(`/def/${word}`)
+    res.redirect(`/def/${word.trim()}`)
   } else {
     res.render('def', {
       cookies: req.cookies,
