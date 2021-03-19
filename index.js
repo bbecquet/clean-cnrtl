@@ -1,4 +1,5 @@
 const express = require('express')
+const { handlebars } = require('hbs')
 const cookieParser = require('cookie-parser')
 
 const app = express()
@@ -11,9 +12,9 @@ app.use(function (req, _res, next) {
   next()
 })
 
-const defs = require('./defRoutes')
+const definitionRoutes = require('./defRoutes')
 
-app.use('/def', defs)
+app.use('/def', definitionRoutes(express.Router(), handlebars))
 app.use(express.static(__dirname))
 
 // Handle 404
