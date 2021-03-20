@@ -1,7 +1,9 @@
-const request = require('request-promise')
+const fetch = require('node-fetch')
 const cheerio = require('cheerio')
 
 const { noComma, removeFromEnd } = require('./utils')
+
+const getHTML = url => fetch(url).then(res => res.text())
 
 function getDef(word) {
   return fetchDefinitions(word).then(defs =>
@@ -17,7 +19,7 @@ function getDef(word) {
  * @param {string} word the word to look for
  */
 function fetchDefinitions(word) {
-  return request(getCnrtlURL(word))
+  return getHTML(getCnrtlURL(word))
     .then(html => {
       const $ = cheerio.load(html)
       // make a request for each "tab" index, except the first one we already have
@@ -25,7 +27,7 @@ function fetchDefinitions(word) {
       // a full HTML page is returned each time
       const htmls = [$.html()]
       for (let i = 1; i < tabCount; i++) {
-        htmls.push(request(`${getCnrtlURL(word)}//${i}`)) // urls on CNRTL have two slashes ¯\_(ツ)_/¯
+        htmls.push(getHTML(`${getCnrtlURL(word)}//${i}`)) // urls on CNRTL have two slashes ¯\_(ツ)_/¯
       }
       return Promise.all(htmls)
     })
