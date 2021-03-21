@@ -1,7 +1,7 @@
 const { inlineSVG } = require('./src/inlineSVG')
 const { getDef, getCnrtlURL } = require('./src/cnrtl-util')
 
-function getDefRoutes(router, handlebars) {
+function getDefRoutes(router, handlebars, rootUrl) {
   handlebars.registerHelper('inlineSVG', inlineSVG)
 
   handlebars.registerHelper('ifEquals', function (arg1, arg2, options) {
@@ -13,6 +13,7 @@ function getDefRoutes(router, handlebars) {
     getDef(word)
       .then(defs => {
         res.render('def', {
+          rootUrl,
           layout: 'tlfi',
           defs,
           word,
@@ -29,9 +30,10 @@ function getDefRoutes(router, handlebars) {
   router.get('/', function (req, res, next) {
     const word = req.query['word']
     if (word) {
-      res.redirect(`/def/${word.trim()}`)
+      res.redirect(`${rootUrl}${word.trim()}`)
     } else {
       res.render('def', {
+        rootUrl,
         layout: 'tlfi',
         cookies: req.cookies,
       })

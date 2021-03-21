@@ -14,8 +14,10 @@ app.use(function (req, _res, next) {
 
 const definitionRoutes = require('./defRoutes')
 
-app.use('/def', definitionRoutes(express.Router(), handlebars))
-app.use(express.static(__dirname))
+const defRouteUrl = '/def'
+
+app.use(defRouteUrl, express.static(__dirname))
+app.use(defRouteUrl, definitionRoutes(express.Router(), handlebars, defRouteUrl + '/'))
 
 // Handle 404
 app.use(function (req, res) {

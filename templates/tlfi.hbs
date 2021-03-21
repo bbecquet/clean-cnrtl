@@ -7,26 +7,26 @@
   <title>{{#if word}}Définition de "{{{ word }}}" - {{/if}}Simple TLFi</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0" />
   <meta name="author" content="Benjamin Becquet" />
-  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="{{{rootUrl}}}styles/main.css">
 </head>
 
 <body class="{{#unless word}}home{{/unless}}">
   <div id="top" class="page">
     <header>
-      <a href="/def">
+      <a href="{{{rootUrl}}}">
         <h1 class="pageTitle">
           <span class="icon">{{{inlineSVG "imgs/icon-book.svg"}}}</span>
           <span class="text">Simple TLFi</span>
         </h1>
       </a>
       <div id="controls">
-        <form class="searchForm" action="/def" method="get">
+        <form class="searchForm" action="{{{rootUrl}}}" method="get">
           <div class="wordInputWrapper">
             <input id="wordInput" type="text" name="word" aria-label="Chercher un mot" {{#if word}}value="{{{word}}}"
               class="filled" {{else}}autofocus{{/if}} />
             <button id="wordInputClear" type="button" aria-label="Effacer"></button>
             <button id="wordInputSubmit" type="submit" aria-label="Chercher">
-              <img src=" ../imgs/icon-mag-glass.svg" alt="" />
+              <img src="{{{rootUrl}}}imgs/icon-mag-glass.svg" alt="" />
             </button>
           </div>
         </form>
