@@ -1,8 +1,8 @@
 const { inlineSVG } = require('./src/inlineSVG')
 const { getDef, getCnrtlURL } = require('./src/cnrtl-util')
 
-function getDefRoutes(router, handlebars, rootUrl) {
-  handlebars.registerHelper('inlineSVG', inlineSVG)
+function getDefRoutes(router, handlebars, rootUrl = '/', rootPath = '.') {
+  handlebars.registerHelper('inlineSVG', inlineSVG(rootPath))
 
   handlebars.registerHelper('ifEquals', function (arg1, arg2, options) {
     return arg1 == arg2 ? options.fn(this) : options.inverse(this)

@@ -1,9 +1,9 @@
 const fs = require('fs')
+const path = require('path')
 
-const inlineSVG = iconName => {
-  let path = iconName
+const inlineSVG = rootPath => iconName => {
   try {
-    return fs.readFileSync(path, 'utf8')
+    return fs.readFileSync(path.join(rootPath, iconName), 'utf8')
   } catch (err) {
     console.error(err)
     return ''
