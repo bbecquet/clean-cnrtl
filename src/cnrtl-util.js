@@ -96,7 +96,14 @@ function transformExamples($) {
     const $node = $(node)
     const rawHTML = $node.html()
 
-    const citationEnd = rawHTML.indexOf('<span class="tlf_cauteur"')
+    let citationEnd = -1
+    const citationEndTagClasses = ['tlf_cauteur', 'tlf_ctitre', 'tlf_cpublication', 'tlf_cdate']
+    for (let i = 0; citationEnd === -1 && i < citationEndTagClasses.length; i++) {
+      citationEnd = rawHTML.indexOf(`<span class="${citationEndTagClasses[i]}`)
+    }
+    if (citationEnd === -1) {
+      citationEnd = rawHTML.length - 1
+    }
 
     let citation = removeFromEnd(rawHTML.substring(0, citationEnd), ['(', ' '])
       .replace(/ <\/i>$/, '</i>')
