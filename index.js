@@ -1,23 +1,17 @@
 const express = require('express')
-const { handlebars } = require('hbs')
 const cookieParser = require('cookie-parser')
 
 const app = express()
 app.use(cookieParser())
-app.set('view engine', 'hbs')
-app.set('views', __dirname + '/templates')
 
 app.use(function (req, _res, next) {
   console.log(new Date().toISOString(), req.originalUrl)
   next()
 })
 
-const definitionRoutes = require('./defRoutes')
-
-const defRouteUrl = '/def'
-
-app.use(defRouteUrl, express.static(__dirname))
-app.use(defRouteUrl, definitionRoutes(express.Router(), handlebars, defRouteUrl + '/'))
+const definitionApp = require('./defApp')
+const defPath = '/'
+app.use(defPath, definitionApp(defPath))
 
 // Handle 404
 app.use(function (req, res) {
