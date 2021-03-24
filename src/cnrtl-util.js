@@ -24,6 +24,9 @@ function fetchDefinitions(word) {
       const $ = cheerio.load(html)
       // make a request for each "tab" index, except the first one we already have
       const tabCount = $('#vtoolbar li a').length
+      if (tabCount === 0) {
+        return Promise.reject('NO_DEF')
+      }
       // a full HTML page is returned each time
       const htmls = [$.html()]
       for (let i = 1; i < tabCount; i++) {

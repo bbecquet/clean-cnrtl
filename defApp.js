@@ -4,6 +4,7 @@ const express = require('express')
 const { inlineSVG } = require('./src/inlineSVG')
 const { getDef, getCnrtlURL } = require('./src/cnrtl-util')
 const handlebars = require('handlebars')
+const { render } = require('sass')
 
 function getDefRoutes(rootUrl = '/', rootPath = '.') {
   handlebars.registerPartial(
@@ -40,8 +41,19 @@ function getDefRoutes(rootUrl = '/', rootPath = '.') {
         )
       })
       .catch(error => {
-        console.error(error)
-        next()
+        if (error === 'NO_DEF') {
+          res.send(
+            renderDef({
+              rootUrl,
+              defs: [],
+              word,
+              cookies: req.cookies,
+            })
+          )
+        } else {
+          console.error(error)
+          next()
+        }
       })
   })
 
