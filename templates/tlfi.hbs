@@ -23,8 +23,8 @@
       <div id="controls">
         <form class="searchForm" action="{{{rootUrl}}}" method="get">
           <div class="wordInputWrapper">
-            <input id="wordInput" type="text" name="word" aria-label="Chercher un mot" {{#if word}}value="{{{word}}}"
-              class="filled" {{else}}autofocus{{/if}} />
+            <input id="wordInput" type="text" name="word" aria-label="Chercher un mot" placeholder="Chercher un mot"
+              {{#if word}}value="{{{word}}}" class="filled" {{else}}autofocus{{/if}} />
             <button id="wordInputClear" type="button" aria-label="Effacer"></button>
             <button id="wordInputSubmit" type="submit" aria-label="Chercher">
               <img src="{{{rootUrl}}}imgs/icon-mag-glass.svg" alt="" />
