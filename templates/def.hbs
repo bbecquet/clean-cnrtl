@@ -4,8 +4,9 @@
 
 {{#if defs.length}}
 <div class="cnrtlLink-wrapper">
-  <a class="external cnrtlLink" href="{{cnrtlLink}}" target="_blank">Voir sur le CNRTL
-    {{{inlineSVG "imgs/icon-external-link.svg"}}}</a>
+  <a class="external cnrtlLink" href="{{cnrtlLink}}" target="_blank" rel="noopener noreferrer">
+    Voir sur le CNRTL {{{inlineSVG "imgs/icon-external-link.svg"}}}
+  </a>
 </div>
 {{/if}}
 
@@ -33,7 +34,7 @@
 </div>
 {{/if}}
 
-<a id="backToTop" aria-hidden="true" href="#top"></a>
+<a id="backToTop" aria-label="Retour en haut de page" href="#top"></a>
 
 <script>
   const rootElement = document.documentElement;
