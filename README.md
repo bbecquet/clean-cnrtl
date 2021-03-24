@@ -8,3 +8,7 @@ This project acts as a new front UI to the CNRTL dictionary, with the following 
 - simpler and **more semantic HTML markup**, to improve rendering from screen-readers and allow custom styling.
 - a **simpler web UI**, easy to use and quick to load, focusing on the dictionary search and result.
 - a **responsive design**, so the dictionary is fully usable on any type of device.
+
+## Disclaimer
+
+Content fetched and displayed by this app belongs to the CNTRL.
