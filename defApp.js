@@ -37,6 +37,7 @@ function getDefRoutes(rootUrl = '/', rootPath = '.') {
             word,
             cnrtlLink: getCnrtlURL(word),
             cookies: req.cookies,
+            meta: `<link rel="canonical" href="${getCnrtlURL(word)}" />`,
           })
         )
       })
