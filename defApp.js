@@ -4,7 +4,6 @@ const express = require('express')
 const { inlineSVG } = require('./src/inlineSVG')
 const { getDef, getCnrtlURL } = require('./src/cnrtl-util')
 const handlebars = require('handlebars')
-const { render } = require('sass')
 
 function getDefRoutes(rootUrl = '/', rootPath = '.') {
   handlebars.registerPartial(
