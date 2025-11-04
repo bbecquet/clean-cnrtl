@@ -1,3 +1,6 @@
+> [!WARNING]
+> This repo has been archived and migrated to Codeberg https://codeberg.org/bbecquet/clean-cnrtl
+
 # Clean CNRTL
 
 Attempt to create a more readable and more accessible version of the [TLFi dictionary](https://fr.wikipedia.org/wiki/Tr%C3%A9sor_de_la_langue_fran%C3%A7aise_informatis%C3%A9) as displayed on the _Centre National des Ressources Textuelles et Lexicales_ (CNRTL), which is one of the best dictionaries available for French but suffers from a complex and outdated presentation that greatly reduces its usefulness for the general public (though it may be adapted to academic usage).
